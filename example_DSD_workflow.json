@@ -1,6 +1,6 @@
 {
-  "last_node_id": 82,
-  "last_link_id": 105,
+  "last_node_id": 92,
+  "last_link_id": 117,
   "nodes": [
     {
       "id": 29,
@@ -34,7 +34,7 @@
         "Node name for S&R": "RandomNoise"
       },
       "widgets_values": [
-        1020369300405415,
+        96678305476818,
         "randomize"
       ],
       "color": "#223",
@@ -89,7 +89,7 @@
         380
       ],
       "flags": {},
-      "order": 23,
+      "order": 24,
       "mode": 4,
       "inputs": [
         {
@@ -209,7 +209,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 19,
+      "order": 20,
       "mode": 4,
       "inputs": [
         {
@@ -350,7 +350,7 @@
         530
       ],
       "flags": {},
-      "order": 25,
+      "order": 29,
       "mode": 4,
       "inputs": [
         {
@@ -379,7 +379,7 @@
         46
       ],
       "flags": {},
-      "order": 18,
+      "order": 19,
       "mode": 4,
       "inputs": [
         {
@@ -422,7 +422,7 @@
         82
       ],
       "flags": {},
-      "order": 14,
+      "order": 15,
       "mode": 4,
       "inputs": [
         {
@@ -504,7 +504,7 @@
         58
       ],
       "flags": {},
-      "order": 15,
+      "order": 16,
       "mode": 4,
       "inputs": [
         {
@@ -549,7 +549,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 20,
+      "order": 21,
       "mode": 4,
       "inputs": [
         {
@@ -585,7 +585,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 21,
+      "order": 22,
       "mode": 4,
       "inputs": [
         {
@@ -755,7 +755,7 @@
         142
       ],
       "flags": {},
-      "order": 16,
+      "order": 17,
       "mode": 4,
       "inputs": [
         {
@@ -827,7 +827,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 24,
+      "order": 26,
       "mode": 4,
       "inputs": [
         {
@@ -937,53 +937,18 @@
       "bgcolor": "#653"
     },
     {
-      "id": 64,
-      "type": "VAELoader",
-      "pos": [
-        148,
-        -118
-      ],
-      "size": [
-        308,
-        58
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "shape": 3,
-          "links": [],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.18",
-        "Node name for S&R": "VAELoader"
-      },
-      "widgets_values": [
-        "ae.safetensors"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 66,
       "type": "UNETLoader",
       "pos": [
-        148,
-        -270
+        140,
+        538
       ],
       "size": [
         316,
         82
       ],
       "flags": {},
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1008,47 +973,181 @@
       "bgcolor": "#653"
     },
     {
-      "id": 65,
-      "type": "PreviewImage",
+      "id": 83,
+      "type": "Florence2Run",
       "pos": [
-        1074,
-        -260
+        234,
+        -754
       ],
       "size": [
-        864,
-        1044
+        332,
+        364
       ],
       "flags": {},
-      "order": 22,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
-          "name": "images",
+          "name": "image",
           "type": "IMAGE",
-          "link": 105
+          "link": 110
+        },
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "link": 106,
+          "slot_index": 1
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "shape": 3,
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "caption",
+          "type": "STRING",
+          "shape": 3,
+          "links": [
+            109
+          ],
+          "slot_index": 2
+        },
+        {
+          "name": "data",
+          "type": "JSON",
+          "shape": 3,
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-florence2",
+        "ver": "90b012e922f8bb0482bcd2ae24cdc191ec12a11f",
+        "Node name for S&R": "Florence2Run"
+      },
+      "widgets_values": [
+        "",
+        "more_detailed_caption",
+        true,
+        false,
+        1024,
+        3,
+        true,
+        "",
+        941668227162054,
+        "randomize",
+        [
+          false,
+          true
+        ]
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 64,
+      "type": "VAELoader",
+      "pos": [
+        140,
+        690
+      ],
+      "size": [
+        308,
+        58
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "shape": 3,
+          "links": [],
+          "slot_index": 0
+        }
+      ],
       "properties": {
         "cnr_id": "comfy-core",
-        "ver": "0.3.24",
-        "Node name for S&R": "PreviewImage"
+        "ver": "0.3.18",
+        "Node name for S&R": "VAELoader"
       },
-      "widgets_values": []
+      "widgets_values": [
+        "ae.safetensors"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 84,
+      "type": "DownloadAndLoadFlorence2Model",
+      "pos": [
+        656,
+        -502
+      ],
+      "size": [
+        316,
+        106
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora",
+          "type": "PEFTLORA",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "shape": 3,
+          "links": [
+            106
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-florence2",
+        "ver": "90b012e922f8bb0482bcd2ae24cdc191ec12a11f",
+        "Node name for S&R": "DownloadAndLoadFlorence2Model"
+      },
+      "widgets_values": [
+        "microsoft/Florence-2-base",
+        "fp16",
+        "sdpa"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
     },
     {
       "id": 8,
       "type": "LoadImage",
       "pos": [
-        134,
-        -2
+        186,
+        -262
       ],
       "size": [
-        314,
-        442
+        538,
+        616
       ],
       "flags": {},
-      "order": 13,
+      "order": 14,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1057,7 +1156,8 @@
           "type": "IMAGE",
           "shape": 3,
           "links": [
-            104
+            110,
+            114
           ],
           "slot_index": 0
         },
@@ -1077,27 +1177,194 @@
       "widgets_values": [
         "0_1.webp",
         "image"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 88,
+      "type": "ShowText|pysssss",
+      "pos": [
+        612,
+        -750
+      ],
+      "size": [
+        462,
+        176
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "pos": [
+            10,
+            36
+          ],
+          "widget": {
+            "name": "text"
+          },
+          "link": 109
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "shape": 6,
+          "links": [
+            107
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "bbda5e52ad580c13ceaa53136d9c2bed9137bd2e",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        [
+          "The image is a portrait of a young woman lying on an orange couch. She is wearing a red lingerie set and is resting her head on the armrest of the couch. The woman has long dark hair and is smiling at the camera. In the background, there is a round window with a view of a mountain range. The overall mood of the image is relaxed and comfortable."
+        ],
+        "The image is a digital illustration of a red planet with a large red planet in the background. The planet appears to be a reddish-brown color and is surrounded by rocky terrain. In the foreground, there is a sign that reads \"MAROS\" with an American flag on top. The sky is cloudy and the sun is setting, casting a warm glow over the scene. The overall mood of the image is desolate and desolate."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 85,
+      "type": "easy promptReplace",
+      "pos": [
+        1146,
+        -756
+      ],
+      "size": [
+        286,
+        202
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "pos": [
+            10,
+            36
+          ],
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 107
+        }
+      ],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            116,
+            117
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "0daf114fe8870aeacfea484aa59e7f9973b91cd5",
+        "Node name for S&R": "easy promptReplace"
+      },
+      "widgets_values": [
+        "",
+        " digital illustration",
+        "photorealistic",
+        "",
+        "",
+        "",
+        "",
+        [
+          false,
+          true
+        ]
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 92,
+      "type": "easy showAnything",
+      "pos": [
+        1042,
+        -484
+      ],
+      "size": [
+        540,
+        110
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "shape": 7,
+          "link": 117
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "0daf114fe8870aeacfea484aa59e7f9973b91cd5",
+        "Node name for S&R": "easy showAnything"
+      },
+      "widgets_values": [
+        "The image is aphotorealistic of a red planet with a large red planet in the background. The planet appears to be a reddish-brown color and is surrounded by rocky terrain. In the foreground, there is a sign that reads \"MAROS\" with an American flag on top. The sky is cloudy and the sun is setting, casting a warm glow over the scene. The overall mood of the image is desolate and desolate."
       ]
     },
     {
-      "id": 82,
+      "id": 91,
       "type": "DiffusionSelfDistillation",
       "pos": [
-        530,
-        -6
+        826,
+        -248
       ],
       "size": [
-        412,
-        378
+        582,
+        594
       ],
       "flags": {},
-      "order": 17,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 104
+          "link": 114
+        },
+        {
+          "name": "positive",
+          "type": "STRING",
+          "pos": [
+            10,
+            36
+          ],
+          "widget": {
+            "name": "positive"
+          },
+          "link": 116
         }
       ],
       "outputs": [
@@ -1105,7 +1372,7 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            105
+            115
           ],
           "slot_index": 0
         }
@@ -1116,6 +1383,7 @@
         "Node name for S&R": "DiffusionSelfDistillation"
       },
       "widgets_values": [
+        "",
         "a dramatic moonlight ",
         "",
         3.5,
@@ -1123,8 +1391,12 @@
         1,
         30,
         "cuda",
-        207462102092454,
+        960975055043271,
         "randomize",
+        [
+          false,
+          true
+        ],
         [
           false,
           true
@@ -1134,6 +1406,35 @@
           true
         ]
       ]
+    },
+    {
+      "id": 65,
+      "type": "PreviewImage",
+      "pos": [
+        1494,
+        -248
+      ],
+      "size": [
+        864,
+        1044
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 115
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.24",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
     }
   ],
   "links": [
@@ -1282,20 +1583,68 @@
       "IMAGE"
     ],
     [
-      104,
+      106,
+      84,
+      0,
+      83,
+      1,
+      "FL2MODEL"
+    ],
+    [
+      107,
+      88,
+      0,
+      85,
+      0,
+      "STRING"
+    ],
+    [
+      109,
+      83,
+      2,
+      88,
+      0,
+      "STRING"
+    ],
+    [
+      110,
       8,
       0,
-      82,
+      83,
       0,
       "IMAGE"
     ],
     [
-      105,
-      82,
+      114,
+      8,
+      0,
+      91,
+      0,
+      "IMAGE"
+    ],
+    [
+      115,
+      91,
       0,
       65,
       0,
       "IMAGE"
+    ],
+    [
+      116,
+      85,
+      0,
+      91,
+      1,
+      "STRING"
+    ],
+    [
+      117,
+      85,
+      0,
+      92,
+      0,
+      "*"
     ]
   ],
   "groups": [
@@ -1311,15 +1660,28 @@
       "color": "#3f789e",
       "font_size": 24,
       "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "LLM / Florence",
+      "bounding": [
+        188,
+        -838,
+        1428,
+        500
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
     }
   ],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.7513148009015777,
+      "scale": 0.6209213230591552,
       "offset": [
-        291.7352162475588,
-        287.75243249511726
+        94.74420541320717,
+        1197.0965700296015
       ]
     },
     "ue_links": [],

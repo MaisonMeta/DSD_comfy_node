@@ -1053,6 +1053,7 @@ class DSDNode:
                 "image": ("IMAGE",),
                 "positive": ("STRING", {"multiline": True}),
                 "negative": ("STRING", {"multiline": True, "default": ""}),
+                "context": ("STRING", {"multiline": True, "default": ""}),
                 "guidance_scale": ("FLOAT", {"default": 3.5, "min": 0.0, "max": 10.0, "step": 0.1}),
                 "image_guidance": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 5.0, "step": 0.1}),
                 "text_guidance": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 5.0, "step": 0.1}),
@@ -1138,7 +1139,7 @@ class DSDNode:
             print(f"Error details: {str(e)}")
             return False
     
-    def run(self, image, positive, negative, guidance_scale, image_guidance, text_guidance, steps, device="cuda", seed=None):
+    def run(self, image, positive, negative, context, guidance_scale, image_guidance, text_guidance, steps, device="cuda", seed=None):
         """Process an image with DSD"""
         try:
             start_time = time.time()
@@ -1146,9 +1147,16 @@ class DSDNode:
             print(f"DSD NODE PROCESSING - started at {time.strftime('%H:%M:%S')}")
             print("="*50)
             
+            # Merge context with positive prompt if context is provided
+            if context and context.strip():
+                merged_prompt = f"{positive.strip()}, {context.strip()}" if positive.strip() else context.strip()
+                print(f"Context added to prompt: \"{context[:50]}{'...' if len(context) > 50 else ''}\"")
+            else:
+                merged_prompt = positive
+            
             # Log input parameters
             print(f"Input parameters:")
-            print(f"  - Positive prompt: \"{positive[:50]}{'...' if len(positive) > 50 else ''}\"")
+            print(f"  - Positive prompt: \"{merged_prompt[:50]}{'...' if len(merged_prompt) > 50 else ''}\"")
             print(f"  - Negative prompt: \"{negative[:50]}{'...' if len(negative) > 50 else ''}\"")
             print(f"  - Guidance scale: {guidance_scale}")
             print(f"  - Image guidance: {image_guidance}")
@@ -1158,7 +1166,7 @@ class DSDNode:
             print(f"  - Seed: {seed}")
             
             # Return early if prompt is empty
-            if not positive.strip():
+            if not merged_prompt.strip():
                 print("WARNING: Empty prompt provided, returning original image")
                 print("Please provide a descriptive prompt for best results")
                 return (image,)
@@ -1232,7 +1240,7 @@ class DSDNode:
                 
             result_pil = self.processor.process_image(
                 image=pil_image,
-                prompt=positive,
+                prompt=merged_prompt,
                 negative_prompt=negative,
                 steps=steps,
                 guidance_scale=guidance_scale,
